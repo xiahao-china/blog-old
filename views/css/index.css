@@ -1,0 +1,245 @@
+body{
+    overflow: hidden;
+
+}
+.indexBackground{
+    position: absolute;
+    background-image:url("../img/indexBackground.jpg") ;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    z-index: -1;
+}
+.Curtain{
+    background:linear-gradient(#122b40,black);
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.head>div:nth-child(2){
+    color: #ffffff;
+    font-size: large;
+    padding-top: 10px;
+}
+.head>div:nth-child(2) div{
+    margin-left: 40px;
+    padding: 5px;
+    float: left;
+}
+.head>div:nth-child(2)>div:nth-child(3){
+    border: white 1.5px solid;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+}
+.head>div:nth-child(2) div:hover{
+    border-bottom: white 1.5px solid;
+    color: #eb9c2b;
+}
+.active,
+.active>a{
+
+    color: #eb9c2b;
+}
+.active{
+    border-bottom: white 1.5px solid;
+}
+.head>div:nth-child(2)>div:nth-child(3):hover{
+    border: white 1.5px solid;
+    color: #eb9c2b;
+}
+.HotTip{
+    margin-top: 50px;
+    height: 530px;
+
+    border-radius: 15px;
+    padding-top: 5px;
+}
+.HotTip>div{
+    margin-bottom: 10px;
+    border-radius: 10px;
+    float: left;
+    overflow: hidden;
+    padding: 0;
+    width: 47%;
+    height: 250px;
+}
+.HotTip>div:nth-child(2),.HotTip>div:nth-child(4){
+    margin-left: 5%;
+}
+.HotTip>div>img{
+    height: 250px;
+    opacity: 0.8;
+    transition: all 0.1s;
+}
+.HotTip>div:hover>img{
+    opacity: 1;
+}
+.HotTip>div>div{
+    position: relative;
+
+    height: 150px;
+    top: -150px;
+    transition: 800ms all;
+}
+.HotTip>div>div>div:first-child{
+}
+.HotTip>div>div>div:nth-child(2){
+    color: white;
+    position: relative;
+    left: 15px;
+    top: 5px;
+    background-color: #bee859;
+    width: 30px;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.HotTip>div>div>div>span{
+    top: -5px;
+    font-size: 15px;
+}
+.HotTip>div>div>div:nth-child(3){
+    background-color: rgba(0,0,0,0.2);
+    height:150px;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+}
+.HotTip>div>div>div:nth-child(3) span{
+    color: white;
+}
+
+.HotTip>div>div>div:nth-child(3)>p:first-child{
+    font-size: large;
+    font-weight: bold;
+}
+.HotTip>div>div>div:nth-child(3)>p:nth-child(2){
+    font-size: 13px;
+}
+.HotTip>div>div>div:nth-child(3)>p:first-child>span{
+    margin-left: 5px;
+    font-size: small;
+}
+
+
+.HotTipSvg{
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    vertical-align: middle;
+
+}
+
+.middle>div:last-child{
+    color: white;
+    padding-top: 10px;
+    top:200px;
+}
+.middle>div:last-child>div:first-child{
+    border: white 1.5px solid;
+    font-size: large;
+    text-align: center;
+    padding-top: 5px;
+    height: 40px;
+    width: 100px;
+}
+.middle>div:last-child>div:nth-child(2){
+    font-weight: bold;
+    font-size:50px;
+}
+.middle>div:last-child>div:nth-child(2)>span{
+    color: #48b6d6;
+}
+.middle>div:last-child>div:first-child{
+    font-size: medium;
+}
+.middle>div:last-child>div:nth-child(4),.hideButton{
+    font-size: medium;
+    border-radius: 20px;
+    height: 40px;
+    width: 200px;
+    float: right;
+    background-color: white;
+    color: #7b3e7b;
+    text-align: center;
+    padding-top: 7px;
+    font-weight: bold;
+    margin-right: 50px;
+}
+.hideButton{
+    float: none;
+    right: 0;
+    left: 0;
+    margin: auto;
+    display: none;
+}
+.middle>div:last-child>div:nth-child(4):hover,.hideButton:hover{
+    color: white;
+    background-color: #7b3e7b;
+}
+
+#signIn>div{
+    background-color: white;
+    border-radius: 10px;
+}
+
+#signIn>div>div:first-child{
+    padding:10px ;
+}
+
+#signIn>div>div:first-child>h4{
+    font-size: medium;
+    padding: 10px 0px 5px 5px;
+    margin: 0;
+}
+
+#signIn>div>div:first-child>span{
+    margin-top: 7px;
+}
+#signIn>div>div:first-child>span:hover{
+    color: black;
+}
+
+#signIn>div>div:nth-child(2)>div{
+    margin: 10px;
+}
+#signIn>div>div:nth-child(2) span{
+    margin: 7px 7px 7px 0px;
+}
+
+#signIn>div>div:nth-child(2) input{
+    padding: 5px;
+    border-radius: 3px;
+    border: rgba(0,0,0,0.2) 1px solid;
+}
+
+#signIn>div>div:nth-child(2) a{
+    color: #737373;
+}
+
+#signIn>div>div:nth-child(2) a:hover{
+    color: rgba(0,0,0,0.9);
+}
+
+@media screen and (min-width: 1200px) {
+    .HotTip{
+        margin-left: 30px;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .middle>div:last-child>div{
+        display: none;
+    }
+    .hideButton{
+        display: block;
+    }
+
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览博文</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/blogDetail.css">
+</head>
+<body>
+
+<nav class="head navbar navbar-collapse navbar-inverse">
+    <div class="col-lg-offset-2 col-lg-2 logo">
+        <img src="../img/logo.png">
+        <span>Blog</span>
+    </div>
+
+    <div class="col-lg-6 ">
+        <div class="collapse navbar-collapse pull-right ">
+            <ul class="nav navbar-nav ">
+                <li><a href="./index.html">主页</a></li>
+                <li class="active"><a class="active" href="#">博文目录</a></li>
+                <li><a href="myself.html">个人中心</a></li>
+                <li><a href="#">登陆</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="row ">
+
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-8 mainBody" id="blogDetail">
+            <div class="headInf col-lg-12">
+                <div class="pull-left">
+                    <img class="img-circle" src="../img/head_test.jpg">
+                </div>
+                <div class="pull-left">
+                    <h5 class="text-success">{{newTip.action}}</h5>
+                    <p class="text-muted">{{newTip.time}}发布</p>
+                </div>
+            </div>
+
+            <div class="col-lg-12  blogInner">
+                <div class="col-lg-12">
+                    <h2>{{newTip.name}}</h2>
+                    <div>
+                            <label v-for="label in keyword" class="label label-success pull-left margin-right-sm">{{label}}</label>
+
+                        <p class="text-muted pull-left margin-left-sm  small">{{newTip.saw}}次阅读</p>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-12" v-html="newTip.details">
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+<div class="row foot">
+    <div class="row">
+        <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10">
+            <a class=" col-lg-2 col-lg-offset-2 col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 col-xs-offset-2 col-xs-2 text-center">关于我们</a>
+            <a class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">联系我们</a>
+            <a class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">广告服务</a>
+            <a class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">免责声明</a>
+        </div>
+    </div>
+
+
+    <div class="row text-center">
+        <div class="col-lg-offset-4 col-lg-4">
+            © 2019-20XX xxxxxx.com · 粤ICP备XXXXXXXXXX号-1 · 托管于 阿里云
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+<script src="../js/jquery-3.3.1.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/vue.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/blogDetail.js"></script>
+</html>

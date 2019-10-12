@@ -1,0 +1,156 @@
+body{
+    overflow: hidden;
+}
+textarea{
+    width: 80%;
+    height: 80px;
+}
+.myselfBody{
+    width: 100%;
+    height: 1080px;
+    background: -webkit-linear-gradient(bottom left, #fef7fe, #fff5fd ,#dedffe,#dedffe,#fef7fe); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom left, #fef7fe, #fff5fd, #dedffe,#dedffe,#fef7fe); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom left, #fef7fe, #fff5fd, #dedffe,#dedffe,#fef7fe); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom left, #fef7fe , #fff5fd,#dedffe,#dedffe,#fef7fe); /* 标准的语法（必须放在最后） */
+}
+.myselfBody>div{
+    position: absolute;
+    border-radius: 5px;
+    width: 450px;
+    height: 530px;
+    background: white;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+
+.cardHead{
+    position: relative;
+    height: 400px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: -webkit-linear-gradient(bottom left,#53a5f9,#7dc2f9,#9eebe3); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom left,#53a5f9,#7dc2f9,#9eebe3); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom left,#53a5f9,#7dc2f9,#9eebe3); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom left,#53a5f9,#7dc2f9,#9eebe3); /* 标准的语法（必须放在最后） */
+    border-bottom-left-radius:50% 50px;
+    border-bottom-right-radius:50% 50px ;
+}
+.cardHead>button:first-child{
+    position: absolute;
+    background: rgba(0,0,0,0);
+    color: white;
+}
+.cardHead>div:nth-child(2){
+    width: 80px;
+    height: 80px;
+    position: relative;
+    top: -40px;
+    margin: 0 auto;
+}
+.cardHead>div:nth-child(2)>img{
+    width: 100%;
+    height: 100%;
+    border: rgba(95,181,252,0.5) 4px solid;
+}
+.cardHead>div:last-child{
+    position: relative;
+    top: -10px;
+    color: white;
+
+}
+
+.cardHead>div:last-child>h5{
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.cardHead>div:last-child>p:nth-child(2){
+    font-size: 12px;
+}
+.cardHead>div:last-child>p,
+.cardHead>div:last-child>div>h5{
+    font-size: 17px;
+}
+
+.cardHead>div:last-child>div{
+    margin: 15px 50px;
+}
+.cardHead>div:last-child>div>p:nth-child(2){
+    margin-left: 15px;
+}
+.cardHead>div:last-child>div>h5{
+    padding-left: 0;
+}
+
+.cardFoot{
+    position: relative;
+    font-size: 19px;
+    font-weight: bold;
+    padding-top: 30px;
+}
+.surround{
+    /*border: none;*/
+    /*background-color: white;*/
+    /*color: rgba(114,114,114,0.57);*/
+    /*border-radius: 10px;*/
+    outline: none;
+    border: none;
+    z-index: 1;
+    position: relative;
+    color: rgba(114,114,114,0.57);
+    background: white;
+    padding: 0.5em 1em;
+}
+.surround:hover{
+    cursor: pointer;
+}
+.surround::before{
+     content: "";
+     z-index: -1;
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     border-bottom: rgba(114,114,114,0.57) solid 1.5px;
+     border-bottom-left-radius: 10px;
+     background-color: white;
+     transform-origin: left bottom;
+     transform:scale(0,0);
+     transition: transform 0.4s ease-in-out;
+ }
+.surround:hover::before {
+    transform-origin:left bottom;
+    transform: scale(1,0.9);
+}
+
+.surround::after{
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: rgba(114,114,114,0.57) solid 1.5px;
+    border-top-right-radius: 10px;
+    background-color: white;
+    transform-origin: right top;
+    transform:scale(0,0);
+    transition: transform 0.4s ease-in-out;
+}
+.surround:hover::after {
+    transform-origin:right top;
+    transform: scale(1,0.9);
+}
+
+.changing{
+    background-color: rgba(0,0,0,0);
+    border: 0;
+    border-bottom: white 1px solid;
+}

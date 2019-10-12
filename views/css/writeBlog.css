@@ -1,0 +1,93 @@
+
+.writeBlog{
+    background-color: white;
+    padding: 10px;
+    padding-top: 35px;
+}
+.writeBlog>div{
+    margin-bottom: 15px;
+    padding: 0;
+}
+.writeBlog>div:first-child,
+.writeBlog>div:nth-child(2){
+    height: 40px;
+    background-color:#f1f1f1;
+}
+.writeBlog>div:first-child>input,
+.writeBlog>div:nth-child(2)>input{
+    background-color: rgba(0,0,0,0);
+    width: 100%;
+    font-weight: lighter;
+    font-size: 14px;
+    height: 40px;
+    border: 0px;
+    padding: 5px;
+}
+
+
+
+.writeBlog>div:last-child>button{
+    background-color: rgba(0,0,0,0);
+    border: #ec971f 1px solid;
+    border-radius: 10px;
+    padding: 6px;
+    color: #ec971f;
+    margin-right: 20px;
+    font-size: 14px;
+}
+.writeBlog>div:last-child>button:hover{
+    color: white;
+    background-color: #ec971f;
+}
+
+.addBlogKey{
+    font-size: small;
+}
+.addBlogKey>button{
+    font-size: 10px;
+    padding: 4px 6px;
+}
+.addBlogKey>input{
+    display: inline;
+    width: auto;
+    padding: 3px;
+    border-radius: 5px;
+    border: none;
+    background-color: #f1f1f1;
+    width: 120px;
+}
+.addBlogKey>p{
+    width: auto;
+    padding: 3px 6px;
+    border-radius: 3px;
+    border: rgba(0,0,0,0.1) 1px solid;
+    margin-right: 10px;
+}
+.addBlogKey>p button{
+    background-color: white;
+    font-size: 10px;
+    padding: 3px 1px 3px  3px;
+}
+.editTool{
+    border: rgba(0,0,0,0.1) 1px solid;
+    background-color: #f8f8f8;
+}
+.editTool a:hover{
+    background-color: rgba(0,0,0,0.1);
+    font-weight: bold;
+    color: black;
+}
+
+#editor{
+    overflow:scroll;
+    height: 400px;
+    max-height:800px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: white;
+    padding: 10px;
+    border: rgba(0,0,0,0.1) 1px solid;
+}
+#editor:focus{
+    border: 0px;
+}

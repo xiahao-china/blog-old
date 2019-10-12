@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="views/js/vue.min.js"></script>
+</head>
+<body>
+
+<div id = "app">
+    <p style = "font-size:25px;">计数器: {{ counter }}</p>
+    <button @click = "counter++" style = "font-size:25px;">点我</button>
+</div>
+<script type = "text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            counter: 1
+        }
+    });
+    vm.$watch('counter', function(nval, oval) {
+        alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
+    });
+</script>
+
+
+
+</form>
+</body>
+<script src="views/js/jquery-3.3.1.js"></script>
+<script src="views/js/bootstrap.js"></script>
+
+<script src="test.js"></script>
+</html>

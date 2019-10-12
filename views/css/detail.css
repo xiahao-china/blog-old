@@ -1,0 +1,42 @@
+.mainBody{
+    position: relative;
+}
+
+.head{
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.col-lg-3-5{
+    width: 29.1666666%;
+}
+.tipCenter{
+    box-shadow: 0 0 0 ;
+    margin-right: 15px;
+
+}
+.tipCenter>div:last-child>div{
+    height: 150px;
+}
+.tipCenter>div:first-child{
+    font-size: medium;
+    background-color: #F7F7F7;
+}
+
+.tipCenter>div:nth-child(2)>div>img{
+    height: 120px;
+    width: 150px;
+    border-radius: 5px;
+    margin: 15px;
+}
+.tipCenter>div:nth-child(2)>div>div>a{
+    font-size: 16px;
+    color: #555;
+    font-weight: bold;
+}
+.tipCenter>div:nth-child(2)>div>div>h5{
+    height: 60px;
+    color: rgba(0,0,0,0.6);
+    font-size: 13px;
+    line-height: 20px;
+}
+

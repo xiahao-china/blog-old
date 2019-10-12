@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理页</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/manage.css">
+</head>
+<body>
+<div class="col-lg-2" style="border: 1px solid #aaaaaa;border-radius: 5px;margin: 10px;padding: 5px;">
+    <h5 class="modal-header text-primary" style="padding: 5px;" data-toggle="collapse" data-target="#d1">热帖上传测试</h5>
+    <div id="d1" class="collapse">
+        <label class="label label-success">帖子名</label>
+        <input class="input-group" type="text" id="i1">
+        <label class="label label-success">作者</label>
+        <input class="input-group" type="text" id="i2">
+        <label class="label label-success">简介(10-42字)</label>
+        <input class="input-group" type="text" id="i3">
+        <label class="label label-success">已阅</label>
+        <input class="input-group" type="text" id="i4">
+        <label class="label label-success">上传时间(格式为xx/xx/xx)</label>
+        <input class="input-group" type="text" id="i5">
+        <label class="label label-success">背景图</label>
+        <input class="input-group btn col-lg-10" type="file" id="i6" name="file">
+        <div class="lower_interval_sm"></div>
+        <div class="lower_interval_sm"></div>
+        <button class="btn btn-success pull-right" id="01">提交</button>
+    </div>
+</div>
+
+<div class="col-lg-2" style="border: 1px solid #aaaaaa;border-radius: 5px;margin: 10px;padding: 5px;">
+    <h5 class="modal-header text-primary" style="padding: 5px;" data-toggle="collapse" data-target="#d2">帖子查看+1</h5>
+    <div id="d2" class="collapse">
+        <label class="label label-success">帖子名</label>
+        <input class="input-group" type="text" id="i7">
+        <div class="lower_interval_sm"></div>
+        <div class="lower_interval_sm"></div>
+        <button class="btn btn-success pull-right" id="02">提交</button>
+    </div>
+</div>
+
+<div class="col-lg-2" style="border: 1px solid #aaaaaa;border-radius: 5px;margin: 10px;padding: 5px;">
+    <h5 class="modal-header text-primary" style="padding: 5px;" data-toggle="collapse" data-target="#d3">注册</h5>
+    <div id="d3" class="collapse">
+        <label class="label label-success">账户名</label>
+        <input class="input-group" type="text" id="i8">
+        <label class="label label-success">密码</label>
+        <input class="input-group" type="text" id="i9">
+        <label class="label label-success">性别</label>
+        <input class="input-group" type="text" id="i10">
+        <label class="label label-success">邮箱</label>
+        <input class="input-group" type="text" id="i11">
+        <label class="label label-success">电话</label>
+        <input class="input-group" type="text" id="i12">
+        <label class="label label-success">个人简介</label>
+        <input class="input-group" type="text" id="i13">
+        <label class="label label-success">头像</label>
+        <input class="input-group" type="file" id="i14">
+        <div class="lower_interval_sm"></div>
+        <div class="lower_interval_sm"></div>
+        <button class="btn btn-success pull-right" id="03">提交</button>
+    </div>
+</div>
+
+<div class="col-lg-2" style="border: 1px solid #aaaaaa;border-radius: 5px;margin: 10px;padding: 5px;">
+    <h5 class="modal-header text-primary" style="padding: 5px;" data-toggle="collapse" data-target="#d4">登陆</h5>
+    <div id="d4" class="collapse">
+        <label class="label label-success">账户名</label>
+        <input class="input-group" type="text" id="i15">
+        <label class="label label-success">密码</label>
+        <input class="input-group" type="text" id="i16">
+        <div class="lower_interval_sm"></div>
+        <div class="lower_interval_sm"></div>
+        <button class="btn btn-success pull-right" id="04">提交</button>
+    </div>
+</div>
+
+<div class="col-lg-2" style="border: 1px solid #aaaaaa;border-radius: 5px;margin: 10px;padding: 5px;">
+    <h5 class="modal-header text-primary" style="padding: 5px;" data-toggle="collapse" data-target="#d5">查询个人信息</h5>
+    <div id="d5" class="collapse">
+
+        <div class="lower_interval_sm"></div>
+        <div class="lower_interval_sm"></div>
+        <button class="btn btn-success pull-right" id="05">提交</button>
+    </div>
+</div>
+
+<div class="col-lg-2" style="border: 1px solid #aaaaaa;border-radius: 5px;margin: 10px;padding: 5px;">
+    <h5 class="modal-header text-primary" style="padding: 5px;" data-toggle="collapse" data-target="#d6">更新用户信息</h5>
+    <div id="d6" class="collapse">
+        <label class="label label-success">性别</label>
+        <input class="input-group" type="text" id="i17">
+        <label class="label label-success">邮箱</label>
+        <input class="input-group" type="text" id="i18">
+        <label class="label label-success">手机号</label>
+        <input class="input-group" type="text" id="i19">
+        <label class="label label-success">个人简介</label>
+        <input class="input-group" type="text" id="i20">
+        <div class="lower_interval_sm"></div>
+        <div class="lower_interval_sm"></div>
+        <button class="btn btn-success pull-right" id="06">提交</button>
+    </div>
+</div>
+
+<div class="col-lg-2" style="border: 1px solid #aaaaaa;border-radius: 5px;margin: 10px;padding: 5px;">
+    <h5 class="modal-header text-primary" style="padding: 5px;" data-toggle="collapse" data-target="#d7">更换头像</h5>
+    <div id="d7" class="collapse">
+        <label class="label label-success">头像</label>
+        <input class="input-group" type="file" id="i21">
+        <div class="lower_interval_sm"></div>
+        <div class="lower_interval_sm"></div>
+        <button class="btn btn-success pull-right" id="07">提交</button>
+    </div>
+</div>
+
+<div class="col-lg-2" style="border: 1px solid #aaaaaa;border-radius: 5px;margin: 10px;padding: 5px;">
+    <h5 class="modal-header text-primary" style="padding: 5px;" data-toggle="collapse" data-target="#d8">查找帖子</h5>
+    <div id="d8" class="collapse">
+        <label class="label label-success">搜索条件</label>
+        <input class="input-group" type="text" id="i22">
+        <div class="lower_interval_sm"></div>
+        <div class="lower_interval_sm"></div>
+        <button class="btn btn-success pull-right" id="08">提交</button>
+    </div>
+</div>
+
+    <script src="../js/jquery-3.3.1.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/manage.js"></script>
+</body>
+</html>

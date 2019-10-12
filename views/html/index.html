@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>夏浩的博客</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+<div class="indexBackground">
+    <div class="Curtain">
+    </div>
+</div>
+
+<div class="head row">
+    <div class="col-lg-offset-2 col-lg-2 col-md-offset-2 col-md-2 col-sm-offset-2 col-sm-2 col-xs-offset-1 col-xs-3 logo"><img src="../img/logo.png"><div>Blog</div></div>
+    <div class="col-lg-offset-3 col-lg-4 col-md-offset-2 col-md-4 col-sm-offset-1 col-sm-6  col-xs-8 ">
+        <div class="active"><a href="index.html">Home</a></div>
+        <div>Forum</div>
+        <div data-toggle="modal" data-target="#signIn">Sign In</div>
+    </div>
+</div>
+
+<div class="middle row">
+    <div class="HotTip pull-left col-lg-5  col-md-7 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+        <div >
+            <img src="../img/1.jpg">
+            <div class="row">
+                <div></div>
+                <div></div>
+                <div>
+                    <p>前端基础总结<span class="text-muted"><embed class="HotTipSvg" src="../svg/write.svg">黯星</span></p>
+                    <p>本篇总结了当前的前端基础发展路线，以及一些推荐学习网站和工具等共享资源</p>
+                    <p class="text-muted pull-right"><span><embed class="HotTipSvg" src="../svg/eye.svg">2476</span>
+                        <span><embed class="HotTipSvg" src="../svg/time.svg">2019/7/18</span></p>
+                </div>
+            </div>
+
+        </div>
+        <div ><img src="../img/2.jpeg">
+            <div class="row">
+                <div></div>
+                <div></div>
+                <div>
+                    <p>关于svg的应用<span class="text-muted"><embed class="HotTipSvg" src="../svg/write.svg">黯星</span></p>
+                    <p>这里总结了svg的应用以及一些需要注意的细节，还有本人踩的一些坑</p>
+                    <p class="text-muted pull-right"><span><embed class="HotTipSvg" src="../svg/eye.svg">1671</span>
+                        <span><embed class="HotTipSvg" src="../svg/time.svg">2019/7/17</span></p>
+                </div>
+            </div>
+        </div>
+        <div ><img src="../img/3.jpeg">
+            <div class="row">
+                <div></div>
+                <div></div>
+                <div>
+                    <p>Node.js学习笔记①<span class="text-muted"><embed class="HotTipSvg" src="../svg/write.svg">黯星</span></p>
+                    <p>开始学习node.js啦，顺手总结一些笔记</p>
+                    <p class="text-muted pull-right"><span><embed class="HotTipSvg" src="../svg/eye.svg">1211</span>
+                        <span><embed class="HotTipSvg" src="../svg/time.svg">2019/7/18</span></p>
+                </div>
+            </div>
+        </div>
+        <div ><img src="../img/4.jpg">
+            <div class="row">
+                <div></div>
+                <div></div>
+                <div>
+                    <p>项目总结笔记②<span class="text-muted"><embed class="HotTipSvg" src="../svg/write.svg">黯星</span></p>
+                    <p>本篇总结了前端开始做项目时所需要在交互了解的内容，包括混合上传等</p>
+                    <p class="text-muted pull-right"><span><embed class="HotTipSvg" src="../svg/eye.svg">958</span>
+                        <span><embed class="HotTipSvg" src="../svg/time.svg">2019/7/19</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=""></div>
+
+    <div class="col-lg-4 col-lg-offset-1 col-md-5 ">
+        <div class="col-lg-offset-1">2019</div>
+        <div>Write You <span>Think</span></div>
+        <div>Here you can share your experience with others. We sincerely thank everyone.</div>
+        <div onclick="todetail()">From here on</div>
+    </div>
+</div>
+
+<div class="row ">
+    <span class="hideButton" onclick="todetail()">
+        From here on</span>
+</div>
+
+<div class="modal fade" id="signIn">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-header">
+            <h4 class="col-lg-6">登陆</h4>
+            <button class="btn close" data-dismiss="modal">&times;</button>
+
+        </div>
+        <div class="modal-body logIn">
+            <div class="row">
+                <span class="glyphicon glyphicon-user pull-left"></span>
+                <input class="input-group pull-left col-lg-10 signInput" name="name" placeholder="请输入账号" maxlength="18" tabindex="1"></br>
+            </div>
+            <div class="row">
+                <span class="glyphicon glyphicon-lock pull-left"></span>
+                <input class="input-group pull-left col-lg-10 signInput" name="password" placeholder="请输入密码" maxlength="18" tabindex="2">
+            </div>
+            <a class="pull-right">
+                忘记密码
+            </a><br>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-default" tabindex="4">取消</button>
+            <button class="btn btn-success animated" id="toSignIn" tabindex="3" >登陆</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="../js/jquery-3.3.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>写博客</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/writeBlog.css">
+</head>
+<body>
+<nav class="head navbar navbar-collapse navbar-inverse ">
+    <div class="col-lg-offset-2 col-lg-2 logo">
+        <img src="../img/logo.png">
+        <span>Blog</span>
+    </div>
+
+    <div class="col-lg-6 ">
+        <div class="collapse navbar-collapse pull-right ">
+            <ul class="nav navbar-nav ">
+                <li><a href="./index.html">主页</a></li>
+                <li class="active"><a class="active" href="#">博文目录</a></li>
+                <li><a href="#">个人中心</a></li>
+                <li><a href="#">登陆</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="row">
+
+    <div class="col-lg-offset-3 col-lg-6 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10 writeBlog">
+        <div class="col-lg-offset-1 col-lg-10">
+            <input class="" name="blogName" type="text" placeholder="请输入文章标题">
+        </div>
+
+        <div class="col-lg-offset-1 col-lg-10">
+            <input class="col-lg-12" name="briefIntroduction" type="text" placeholder="请输入文章简介">
+        </div>
+
+        <div class="col-lg-offset-1 col-lg-10">
+            <div class="editTool">
+                <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+                    <div class="btn-group">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" title="字体粗细"><i class="icon-font"></i><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>加粗</li>
+                            <li>正常</li>
+                            <li>变细</li>
+                        </ul>
+                    </div>
+                    <!-- 字体 -->
+                    <div class="btn-group">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" title="字体大小"><i class="icon-text-height"></i>&nbsp;<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a data-edit="fontSize 5"><font size="5">Huge</font></a></li>
+                            <li><a data-edit="fontSize 3"><font size="3">Normal</font></a></li>
+                            <li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
+                        </ul>
+                    </div>
+                    <!-- 字体样式 -->
+                    <div class="btn-group">
+                        <a class="btn" data-edit="bold" title="加粗 (Ctrl/Cmd+B)"><i class="icon-bold"></i></a>
+                        <a class="btn" data-edit="italic" title="斜体 (Ctrl/Cmd+I)"><i class="icon-italic"></i></a>
+                        <a class="btn" data-edit="strikethrough" title="删除符"><i class="icon-strikethrough"></i></a>
+                        <a class="btn" data-edit="underline" title="下划线 (Ctrl/Cmd+U)"><i class="icon-underline"></i></a>
+                    </div>
+                    <!-- 序列化 -->
+                    <div class="btn-group">
+                        <a class="btn" data-edit="insertunorderedlist" title="符号列表"><i class="icon-list-ul"></i></a>
+                        <a class="btn" data-edit="insertorderedlist" title="数字列表"><i class="icon-list-ol"></i></a>
+                        <a class="btn" data-edit="outdent" title="减少缩进 (Shift+Tab)"><i class="icon-indent-left"></i></a>
+                        <a class="btn" data-edit="indent" title="增加缩进 (Tab)"><i class="icon-indent-right"></i></a>
+                    </div>
+                    <!-- 内容位置 -->
+                    <div class="btn-group">
+                        <a class="btn" data-edit="justifyleft" title="文字靠左 (Ctrl/Cmd+L)"><i class="icon-align-left"></i></a>
+                        <a class="btn" data-edit="justifycenter" title="文字靠中 (Ctrl/Cmd+E)"><i class="icon-align-center"></i></a>
+                        <a class="btn" data-edit="justifyright" title="文字靠右 (Ctrl/Cmd+R)"><i class="icon-align-right"></i></a>
+                        <a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="icon-align-justify"></i></a>
+                    </div>
+                    <div class="btn-group">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="icon-link"></i></a>
+                        <div class="dropdown-menu input-append">
+                            <input class="span2" placeholder="URL" type="text" data-edit="createLink"/>
+                            <button class="btn" type="button">Add</button>
+                        </div>
+                        <a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="icon-cut"></i></a>
+
+                    </div>
+
+                    <div class="btn-group">
+                        <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="icon-picture"></i></a>
+                        <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+                    </div>
+                    <div class="btn-group">
+                        <a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="icon-undo"></i></a>
+                        <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a>
+                    </div>
+                    <input type="text" data-edit="inserttext" id="voiceBtn" x-webkit-speech="">
+                </div>
+            </div>
+
+            <div id="editor">
+
+            </div>
+        </div>
+
+        <div class="col-lg-offset-1 col-lg-10 addBlogKey">
+            <span class="col-lg-2 col-md-2 col-sm-2 col-xs-3">添加关键词:</span>
+            <button class="btn btn-info "><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+
+        <div class="col-lg-offset-1 col-lg-10">
+            <button class="col-lg-3 col-lg-offset-2 col-md-offset-2 col-xs-offset-3 col-sm-offset-2" id="putBlog">发布博客</button>
+            <button class="col-lg-3" id="saveBlog">保存草稿</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="row foot">
+    <div class="row">
+        <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10">
+            <a class=" col-lg-2 col-lg-offset-2 col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 col-xs-offset-2 col-xs-2 text-center">关于我们</a>
+            <a class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">联系我们</a>
+            <a class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">广告服务</a>
+            <a class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">免责声明</a>
+        </div>
+    </div>
+
+
+    <div class="row text-center">
+        <div class="col-lg-offset-4 col-lg-4">
+            © 2019-20XX xxxxxx.com · 粤ICP备XXXXXXXXXX号-1 · 托管于 阿里云
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="../js/jquery-3.3.1.js"></script>
+<script src="../js/jquery.hotkeys.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/bootstrap-wysiwyg.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/writeBlog.js"></script>
+</html>
