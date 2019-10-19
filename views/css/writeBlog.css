@@ -77,7 +77,25 @@
     font-weight: bold;
     color: black;
 }
-
+.CoverImg{
+    float: left;
+}
+.CoverImg img{
+    float: left;
+    height: 100px;
+    width: 100px;
+    margin: 0 10px 10px 0;
+}
+.tipHeadImg{
+    float: left;
+    height: 100px;
+    width: 100px;
+    margin: 0 10px 10px 0;
+    border: #d4d4d4 1px dashed;
+}
+.tipHeadImg:hover{
+    background-color: #d4d4d4;
+}
 #editor{
     overflow:scroll;
     height: 400px;

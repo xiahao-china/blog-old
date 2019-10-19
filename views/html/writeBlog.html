@@ -19,9 +19,9 @@
         <div class="collapse navbar-collapse pull-right ">
             <ul class="nav navbar-nav ">
                 <li><a href="./index.html">主页</a></li>
-                <li class="active"><a class="active" href="#">博文目录</a></li>
-                <li><a href="#">个人中心</a></li>
-                <li><a href="#">登陆</a></li>
+                <li><a  href="./detail.html">博文目录</a></li>
+                <li><a href="./myself.html">个人中心</a></li>
+                <li><a class="active" href="./writeBlog.html">写博客</a></li>
             </ul>
         </div>
     </div>
@@ -109,6 +109,12 @@
         <div class="col-lg-offset-1 col-lg-10 addBlogKey">
             <span class="col-lg-2 col-md-2 col-sm-2 col-xs-3">添加关键词:</span>
             <button class="btn btn-info "><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+
+        <div class="col-lg-10 col-lg-offset-1">
+            <span class="col-lg-2 col-md-2 col-sm-2 col-xs-3">添加图片：<input id="tipHeadImg" class="hide" type="file">
+            </span><img class="tipHeadImg" src="../img/add.png" onclick="choseImg()">
+            <div class="CoverImg"></div>
         </div>
 
         <div class="col-lg-offset-1 col-lg-10">

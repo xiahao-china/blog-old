@@ -3,8 +3,103 @@ function deleteBlogKey(){
     console.log(event);
     $(event.path[2]).remove();
 }
+function choseImg(){
+    $('#tipHeadImg').trigger('click');
+}
 
 $(document).ready(function () {
+    let CreateTipFunction=function () {
+        this.allowUpTip=[true,true,true,true,true];
+    };
+    CreateTipFunction.prototype.checkDetail=function (value) {
+        if (!value){
+            PromptBox.displayPromptBox("请输入需要反馈的详细信息");
+            return false;
+        }else {
+            return true
+        }
+    }
+    CreateTipFunction.prototype.checkImg=function (element) {
+        if (!element.files){
+            PromptBox.displayPromptBox("上传图片方便我们更好解决问题");
+            return false;
+        }else {
+            return true
+        }
+    }
+    CreateTipFunction.prototype.postTip=function(value,element) {
+        let tip = new FormData();
+        let keyWord=[];
+        tip.append('name', $('[name="blogName"]').val())
+        tip.append('details', $('#editor').html())
+        for (let i=0;i<$('.addBlogKey').children('p').length;i++ ){
+            keyWord.push($('.addBlogKey').children('p').eq(i).text());
+        }
+        tip.append('keyWord', keyWord);
+        tip.append('briefIntroduction', $('[name="briefIntroduction"]').val());
+        tip.append('img', $('#tipHeadImg')[0].files[0]);
+
+        $.ajax({
+            type: 'post',
+            url: Path+'/writeBlog',
+            contentType:false,
+            dataType: 'json',
+            processData:false,
+            async: true,
+            data: tip,
+            success: function (result) {
+                if (result.status=='200'){
+                    PromptBox.displayPromptBox('上传成功，将跳转至主页');
+                    setTimeout(function () {
+                        location.href='index.html'
+                    },3000)
+
+                }else {
+                    PromptBox.displayPromptBox('上传失败');
+                }
+            },
+            error: function () {
+                alert('服务器连接失败啦');
+            }
+        })
+    }
+    CreateTipFunction.prototype.DetectionImg=function (value){
+        if (!/\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(value)) {
+            return false;
+        }else {
+            return true;
+        }
+    }
+    CreateTipFunction.prototype.addImg=function(){
+        $('.CoverImg')[0].innerHTML='';
+        let img=document.createElement('img');
+        let reader=new FileReader();
+        reader.readAsDataURL($('#tipHeadImg')[0].files[0]);
+        reader.onloadend=function(){
+            $(img).attr('src',reader.result)
+            $('.CoverImg')[0].append(img);
+        }
+        this.allowUpTip[4]=true;
+    }
+    let TipFunction=new CreateTipFunction();
+
+    $('#tipHeadImg').change(function () {
+        for (let i=0;i<$('#tipHeadImg')[0].files.length;i++){
+            if (!TipFunction.DetectionImg($('#tipHeadImg')[0].files[i].name)){
+                PromptBox.displayPromptBox('请选择图片上传');
+                $('#tipHeadImg')[0].value = "";
+                break;
+            }
+
+            if (i==$('#tipHeadImg')[0].files.length-1){
+                TipFunction.addImg();
+            }
+        }
+
+    })
+
+
+
     $(function(){
         //定义字体样式
         function initToolbarBootstrapBindings() {
@@ -58,30 +153,17 @@ $(document).ready(function () {
         })
     })
     $('#putBlog').click(function () {
-        let tip = new FormData();
-        let keyWord=[];
-        tip.append('name', $('[name="blogName"]').val())
-        tip.append('details', $('#editor').html())
-        for (let i=0;i<$('.addBlogKey').children('p').length;i++ ){
-            keyWord.push($('.addBlogKey').children('p').eq(i).text());
+        TipFunction.allowUpTip[0]=TipFunction.allowUpTip[0]&& $("[name='blogName']").val();
+        TipFunction.allowUpTip[1]=TipFunction.allowUpTip[1]&& $("[name='briefIntroduction']").val();
+        TipFunction.allowUpTip[2]=TipFunction.allowUpTip[2]&& $("#editor").html();
+        TipFunction.allowUpTip[3]=TipFunction.allowUpTip[3]&& $('.addBlogKey').children('p').length;
+        let key=true;
+        console.log(TipFunction.allowUpTip);
+        for (let i of TipFunction.allowUpTip){
+            key = key && i;
         }
-        tip.append('keyWord', keyWord);
-        tip.append('briefIntroduction', $('[name="briefIntroduction"]').val());
+        key? TipFunction.postTip():PromptBox.displayPromptBox('帖子未填写完成，请继续编辑');
 
-        $.ajax({
-            type: 'post',
-            url: Path+'/writeBlog',
-            contentType:false,
-            dataType: 'json',
-            processData:false,
-            async: true,
-            data: tip,
-            success: function (result) {
-                PromptBox.displayPromptBox('登陆成功');
-            },
-            error: function () {
-                alert('操作失败');
-            }
-        })
     })
+
 })

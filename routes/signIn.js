@@ -41,9 +41,7 @@ router.post('/',function (req,res,next) {
                         "msg":e});
                     return res.end();
                 }
-                console.log(req.session);
                 req.session.user=result;
-                console.log(req.session);
 
 
                 res.json({"status":'200',

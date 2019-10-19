@@ -23,58 +23,24 @@
     </div>
 </div>
 
-<div class="middle row">
+<div class="middle row" id="hotTip">
+
     <div class="HotTip pull-left col-lg-5  col-md-7 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-        <div >
-            <img src="../img/1.jpg">
+        <div class="Tip"  v-for="tip in tipList" v-bind:id="tip._id" v-on:click="toBlogDetail">
+            <img v-bind:src="tip.img">
             <div class="row">
                 <div></div>
                 <div></div>
                 <div>
-                    <p>前端基础总结<span class="text-muted"><embed class="HotTipSvg" src="../svg/write.svg">黯星</span></p>
-                    <p>本篇总结了当前的前端基础发展路线，以及一些推荐学习网站和工具等共享资源</p>
-                    <p class="text-muted pull-right"><span><embed class="HotTipSvg" src="../svg/eye.svg">2476</span>
-                        <span><embed class="HotTipSvg" src="../svg/time.svg">2019/7/18</span></p>
+                    <p>{{tip.name}}<span class="text-muted"><embed class="HotTipSvg" src="../svg/write.svg">{{tip.action}}</span></p>
+                    <p>{{tip.briefIntroduction}}</p>
+                    <p class="text-muted pull-right"><span><embed class="HotTipSvg" src="../svg/eye.svg">{{tip.saw}}</span>
+                        <span><embed class="HotTipSvg" src="../svg/time.svg">{{tip.time}}</span></p>
                 </div>
             </div>
 
         </div>
-        <div ><img src="../img/2.jpeg">
-            <div class="row">
-                <div></div>
-                <div></div>
-                <div>
-                    <p>关于svg的应用<span class="text-muted"><embed class="HotTipSvg" src="../svg/write.svg">黯星</span></p>
-                    <p>这里总结了svg的应用以及一些需要注意的细节，还有本人踩的一些坑</p>
-                    <p class="text-muted pull-right"><span><embed class="HotTipSvg" src="../svg/eye.svg">1671</span>
-                        <span><embed class="HotTipSvg" src="../svg/time.svg">2019/7/17</span></p>
-                </div>
-            </div>
-        </div>
-        <div ><img src="../img/3.jpeg">
-            <div class="row">
-                <div></div>
-                <div></div>
-                <div>
-                    <p>Node.js学习笔记①<span class="text-muted"><embed class="HotTipSvg" src="../svg/write.svg">黯星</span></p>
-                    <p>开始学习node.js啦，顺手总结一些笔记</p>
-                    <p class="text-muted pull-right"><span><embed class="HotTipSvg" src="../svg/eye.svg">1211</span>
-                        <span><embed class="HotTipSvg" src="../svg/time.svg">2019/7/18</span></p>
-                </div>
-            </div>
-        </div>
-        <div ><img src="../img/4.jpg">
-            <div class="row">
-                <div></div>
-                <div></div>
-                <div>
-                    <p>项目总结笔记②<span class="text-muted"><embed class="HotTipSvg" src="../svg/write.svg">黯星</span></p>
-                    <p>本篇总结了前端开始做项目时所需要在交互了解的内容，包括混合上传等</p>
-                    <p class="text-muted pull-right"><span><embed class="HotTipSvg" src="../svg/eye.svg">958</span>
-                        <span><embed class="HotTipSvg" src="../svg/time.svg">2019/7/19</span></p>
-                </div>
-            </div>
-        </div>
+
     </div>
 
     <div class=""></div>
@@ -124,7 +90,9 @@
 
 
 <script src="../js/jquery-3.3.1.js"></script>
+<script src="../js/jquery.cookie.js"></script>
 <script src="../js/bootstrap.js"></script>
+<script src="../js/vue.min.js"></script>
 <script src="../js/config.js"></script>
 <script src="../js/main.js"></script>
 <script src="../js/index.js"></script>

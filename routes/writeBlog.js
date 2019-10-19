@@ -2,17 +2,20 @@ const express=require('express');
 const path=require('path')
 const multiparty=require('multiparty');
 const router=express.Router();
+const fs=require('fs');
 var sd = require('silly-datetime');
 
 
 const TipModels=require('../models/Tip')
 
 
-
 router.post('/',function (req,res,next) {
     let form=new multiparty.Form();
+    // form.uploadDir='../public/picture/'
     form.parse(req,function (err,fields,file) {
+        console.log(fields,file);
         let tip={};
+        let imgPath='public/picture/'+/\w*(.gif|.jpg|.jpeg|.png|.GIF|.JPG|.PNG)$/g.exec(file.img[0].path)[0];
         try {
             if (!(fields.name[0].length >= 1 && fields.name[0].length <= 25)) {
                 throw new Error('名字请限制在 1-25 个字符')
@@ -43,8 +46,10 @@ router.post('/',function (req,res,next) {
                 //     tip.keyWord+=','+fields.keyWord[i];
                 // }
             }
-            if (file.img) {
-                tip.img=file.img[0].path;
+            if (!file.img[0]) {
+                throw new Error('请上传帖子展示图')
+            }else {
+                tip.img=imgPath;
                 for (let i=1;i<file.img.length;i++){
                     tip.img+=','+file.img[i].path;
                 }
@@ -54,13 +59,27 @@ router.post('/',function (req,res,next) {
             if (file.img){
                 fs.unlink(file.img[0].path,function () {});
             }
+            console.log(Error);
             res.json({"status":'100',
                 "msg":e});
             console.log(e);
-            return res.end();
+            return res.send();
 
         }
 
+        fs.readFile(file.img[0].path,function (err,data) {
+            if(err){
+                return console.log(err);
+            }else{
+                fs.writeFile('../TheBlog/'+imgPath,data,function (err) {
+                    if(err){
+                        return console.log(err);
+                    }else {
+                        console.log("复制欧克");
+                    }
+                })
+            }
+        })
         tip.time=sd.format(new Date(), 'YYYY-MM-DD HH:mm');
         tip.saw=0;
         TipModels.createTip(tip)

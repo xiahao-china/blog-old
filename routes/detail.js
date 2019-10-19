@@ -32,7 +32,7 @@ router.post('/getNewTip',function (req,res,next) {
 })
 
 router.get('/getNewTip',function (req,res,next) {
-    let form=new multiparty.Form();
+    let form=new multiparty.Form({uploadDir:'../public/picture/'});
     form.parse(req,function (err,fileds,file) {
 
         TipModels.getNewTip()

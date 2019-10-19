@@ -9,38 +9,7 @@ $(document).ready(function () {
         data: {
         },
         success: function (result) {
-            if(result.code=='200'){
-                let hotTip=result.Tip;
-                let imgURL=function(img){
-                    let URL=Path+'/'+img;
-                    URL=URL.replace(/ \ /g,"/");
-                    return URL;
-                }
-                for (let i=0;i<4;i++){
-                    hotTip[i].img=imgURL(hotTip[i].img);
-                }
-                new Vue({
-                    el:"#tip",
-                    data:{
-                        hotTip:hotTip
-                    },
-                    methods:{
-                        toBlogDetail:function () {
-                            let id='';
-                            for (let i=0;i<5;i++){
-                                if ($(event.path[i]).attr('class')=='Tip'){
-                                    id=$(event.path[i]).attr('id');
-                                    break;
-                                }
-                            }
-                            $.cookie('id',id);
-                            location.href='./blogDetail.html'
-                        }
-                    }
-                })
-
-            }
-            else PromptBox.displayPromptBox(result.msg);
+            listBlog(result,'#hotTip');
         },
         error: function () {
             PromptBox.displayPromptBox('服务器开小差啦');

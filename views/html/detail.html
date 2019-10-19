@@ -53,21 +53,20 @@
     <div class="col-lg-3-5 pull-left tip hideInSmall">
         <div >
             推荐文章
-            <span data-toggle="collapse" data-target="#tip" data-parent="#tip" class="glyphicon glyphicon-chevron-down"></span>
+            <span data-toggle="collapse" data-target="#hotTip" data-parent="#hotTip" class="glyphicon glyphicon-chevron-down"></span>
         </div>
-        <div id="tip" class="collapse in">
-            <template v-for="tip in hotTip">
-                <div class="Tip" v-on:click="toBlogDetail">
+        <div id="hotTip" class="collapse in">
+
+                <div class="Tip" v-on:click="toBlogDetail" v-for="tip in tipList" v-bind:id="tip._id">
                     <img v-bind:src="tip.img">
                     <div>
-                        <h5><a v-html="tip.details"></a></h5>
+                        <h5><a>{{tip.briefIntroduction}}</a></h5>
                         <p class="text-muted pull-right">
                             <span><embed class="HotTipSvg" src="../svg/eye.svg" >{{tip.saw}}</span>
                             <span><embed class="HotTipSvg" src="../svg/time.svg" v-html="tip.time">{{tip.time}}</span>
                         </p>
                     </div>
                 </div>
-            </template>
 
 
             <!--<div>-->

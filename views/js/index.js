@@ -195,35 +195,7 @@ $(document).ready(function () {
             data: {
             },
             success: function (result) {
-                if(result.code=='200'){
-                    let hotTip='';
-                    let imgURL=function(img){
-                        let URL=Path+'/'+img;
-                        URL=URL.replace(/\\/g,"/");
-                        return URL;
-                    }
-
-
-                    for (let i=0;i<4;i++){
-                        let img=result.Tip[i];
-                        hotTip +='<div >\n' +
-                            '            <img src="'+ imgURL(img.img) +'">\n' +
-                            '            <div class="row">\n' +
-                            '                <div></div>\n' +
-                            '                <div></div>\n' +
-                            '                <div>\n' +
-                            '                    <p>'+result.Tip[i].name+'<span class="text-muted"><embed class="HotTipSvg" src="../svg/write.svg">'+result.Tip[i].action+'</span></p>\n' +
-                            '                    <p>'+result.Tip[i].briefIntroduction+'</p>\n' +
-                            '                    <p class="text-muted pull-right"><span><embed class="HotTipSvg" src="../svg/eye.svg">'+result.Tip[i].saw+'</span>\n' +
-                            '                        <span><embed class="HotTipSvg" src="../svg/time.svg">'+result.Tip[i].time+'</span></p>\n' +
-                            '                </div>\n' +
-                            '            </div>'+
-                            '</div>'
-
-                    }
-                    $('.HotTip').html(hotTip);
-                }
-                else PromptBox.displayPromptBox(result.msg);
+                listBlog(result,'#hotTip')
             },
             error: function () {
                 PromptBox.displayPromptBox('服务器开小差啦');
