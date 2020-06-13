@@ -1,0 +1,352 @@
+
+
+/*------------------------------------------提示框----------------------------------------------------*/
+.promptBox{
+    position: fixed;
+    z-index: 998;
+    background-color: rgba(0,0,0,0.3);
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+}
+
+.promptBox>div{
+    height: 13.5rem;
+    position:absolute;
+    top:50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 1rem;
+}
+.PB-text>div{
+    height: 4rem;
+    background-color: #2f2f2f;
+}
+.promptBox>div>div:first-child{
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    margin-top: 3rem;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%);
+}
+.PB-text>div>div:first-child{
+    display: none;
+}
+.promptBox>div>div:first-child div{
+    position: absolute;
+    border-radius: 50%;
+    /*top:50%;*/
+    /*left: 50%;*/
+    /*-webkit-transform: translate(-50%, -50%);*/
+    /*transform: translate(-50%, -50%);*/
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+}
+
+
+.promptBox>div>div:last-child{
+    color: #727272;
+    text-align: center;
+    font-size: 1.2rem;
+    position: absolute;
+    bottom: 0.5rem;
+}
+.PB-text>div>div:last-child{
+    color: white;
+}
+.leftBorder{
+    border: none;
+    border-left: 0.3rem solid;
+    animation:load 0.8s infinite;
+}
+.rightBorder{
+    border: none;
+    border-right: 0.3rem solid;;
+    animation:unload 0.8s infinite;
+}
+.topBorder{
+    border: none;
+    border-top: 0.3rem solid;;
+    animation:load 0.8s infinite;
+}
+.bottomBorder{
+    border: none;
+    border-bottom: 0.3rem solid;;
+    animation:unload 0.8s infinite;
+}
+
+
+.promptBox-enter,
+.promptBox-leave-to{
+    transform: translateY(10rem);
+    opacity: .3;
+}
+.promptBox-enter-to,
+.promptBox-leave{
+    transform: translateY(0);
+    opacity: 1;
+}
+.promptBox-enter-active,
+.promptBox-leave-active{
+    transition: all .4s ease;
+}
+@keyframes load{
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes unload{
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+
+.PromptBox{
+    position: fixed;
+    top: 100px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(147,174,191,0.5);
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+    width: 200px;
+    height: 35px;
+    border-top: 1px solid rgba(204,219,222,1);
+    border-bottom: 1px solid rgba(204,219,222,1);
+    padding-top: 0px;
+    text-align: center;
+    padding: 5px;
+    z-index: 9999;
+}
+
+/*------------------------------------------移动博客顶部组件----------------------------------------------------*/
+.CHead{
+    background-color: white;
+    border-left: 0;
+    border-right: 0;
+    min-height: 0;
+    width: 100%;
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+
+.CHead a{
+    font-size: 1.4rem;
+}
+.CHead button{
+    transition: all 0.6s ease;
+
+}
+.CHead p{
+    transition: all 0.6s ease;
+}
+.CHeadMode0{
+    transform: rotate(0deg);
+    /*background-color: rgb(121,135,255);*/
+}
+.CHeadMode0 span{
+    color: white;
+}
+.CHeadMode1{
+    transform: rotate(360deg);
+    border: 2px solid rgb(80,90,245);!important;
+
+}
+/*------------------------------------------上拉刷新下拉加载组件----------------------------------------------------*/
+.pagerScroll{
+    width: 100%;
+    height: 5rem;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.pagerScroll img{
+    height: 3rem;
+    width: 3rem;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    animation:load .7s infinite;
+}
+/*------------------------------------------侧边栏组件----------------------------------------------------*/
+.sidebar{
+    width: 70vw;
+    background-color: white;
+    height: 100vh;
+    position: absolute;
+    z-index: 999;
+    background-image: url("../../img/sidebar-tree.png");
+    background-position: bottom;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    /*transform: translateX(70vw);*/
+}
+
+.sidebar-pageBody{
+    transform: translateX(70vw);
+
+}
+.sidebar-pageBody:after{
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    z-index: 99999!important;
+    background-color: rgba(0,0,0,0.3);
+}
+.sidebar-pageBodySetting{
+    transition: all 0.4s ease;
+}
+.sidebar>ul{
+    padding: 0;
+}
+.sidebar>ul>li{
+    color: rgb(68,68,68);
+    text-align: center;
+    list-style: none;
+    margin-top: 2rem;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+.sidebarList{
+
+}
+.sidebarList>a{
+    color: rgb(68,68,68);
+    font-size: 1.35rem;
+}
+.sidebarList>img{
+    margin-right: 1rem;
+}
+.sidebar>ul>li:nth-child(1){
+    margin-top: 2rem;
+    text-align: right;
+}
+.sidebar>ul>li:nth-child(2){
+    margin-top: 5rem;
+    overflow: visible;
+}
+.sidebar>ul>li:nth-child(2)>img{
+    height: 8rem;
+    width: 8rem;
+    box-shadow: 0px 0px 2px 4px rgba(0,0,0,0.15);
+}
+.sidebar>ul>li:nth-child(3){
+    margin-top: 1rem;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.sidebar>ul>li:nth-child(4){
+    margin-top: 3rem;
+}
+
+.sidebar-shell-enter,
+.sidebar-shell-leave-to{
+    transform: translateX(-70vw);
+}
+.sidebar-shell-enter-active,
+.sidebar-shell-leave-active{
+    transition: all 0.4s ease;
+}
+.sidebar-shell-enter-to,
+.sidebar-shell-leave{
+    transform: translateX(0vw);
+}
+/*------------------------------------------其他样式----------------------------------------------------*/
+.font-xs {
+    font-size: 0.7rem!important;
+}
+
+.font-sm {
+    font-size: 0.9rem!important;
+}
+
+.font-sd {
+    font-size: 0.95rem!important;
+}
+
+.font-md {
+    font-size: 1rem!important;
+}
+
+.font-ml {
+    font-size: 1.1rem!important;
+}
+
+.font-lg {
+    font-size: 1.2rem!important;
+}
+
+.font-lger {
+    font-size: 1.5rem;
+}
+
+.blod {
+    font-weight: bold;
+}
+
+.img-xxs {
+    width: 0.5rem !important;
+    height: 0.5rem !important;
+}
+
+.img-xs {
+    width: 0.7rem !important;
+    height: 0.7rem !important;
+}
+
+.img-sm {
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
+.img-sd {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+}
+
+.img-md {
+    width: 2rem !important;
+    height: 2rem !important;
+}
+
+.img-ml {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+}
+
+.img-lg {
+    width: 4rem !important;
+    height: 4rem !important;
+}
+
+.noPad{
+    padding: 0!important;
+}

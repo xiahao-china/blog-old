@@ -1,0 +1,121 @@
+#body:before{
+    content: '';
+    position: fixed;
+    background-color: rgb(224,226,237);
+    border-radius: 50%;
+    height: 35vh;
+    width: 35vh;
+    right: -3vh;
+    top: -10vh;
+}
+/*#body:after{*/
+    /*content: '';*/
+    /*position: fixed;*/
+    /*background-color: rgb(224,226,237);*/
+    /*border-radius: 50%;*/
+    /*height: 35vh;*/
+    /*width: 35vh;*/
+    /*left: -14vh;*/
+    /*bottom: 3vh;*/
+    /*z-index: -1;*/
+/*}*/
+
+.bodyList{
+    min-height: 100vh;
+
+}
+.extension{
+    border-radius: 0.6rem;
+    overflow: hidden;
+}
+
+.blogListTitle{
+    font-weight: bold;
+    margin-top: 2rem;
+}
+.blogListTitle>span{
+    font-weight: normal;
+}
+
+.blogList{
+    height: 10rem;
+    border-radius: 0.6rem;
+    border: solid 1.3px rgb(227,227,227);
+    overflow: hidden;
+    margin-top: 1rem;
+    transition: all 0.6s ease;
+    background-color: white;
+}
+.bodyList > div:nth-child(3){
+    margin-top: 0;
+}
+.blogList>div{
+    overflow: hidden;
+    height: 10rem;
+}
+.blogList>div>img{
+    height: 100%;
+}
+.blogList>div:nth-child(2) div{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.blogList>div:first-child:after{
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: 0;
+    width: 1.2rem;
+    height: 10rem;
+    background-color: transparent;
+    /*border-left: 2rem solid transparent;*/
+    /*border-bottom: 1.2rem solid white;*/
+    border-bottom: 10rem solid white;
+    border-left: 3rem solid transparent;
+    /*border-right: 50px solid transparent;*/
+}
+.blogList>div:nth-child(2)>div:first-child{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+.blogList>div:nth-child(2)>div:nth-child(2){
+    font-size: 1.3rem;
+    color: #9ea9a3;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.blogList>div:nth-child(2)>div:nth-child(3){
+    position: absolute;
+    text-align: center;
+    right: 0;
+    top: 0;
+    width: 24%;
+    height: 2.2rem;
+    border-radius: 74% 25% 8% 100% / 0% 0% 51% 79% ;
+    color: white;
+    font-size: 1.2rem;
+    background-color: rgb(0,17,105);
+    overflow: hidden;
+    padding-top: 0.2rem;
+}
+.blogList>div:nth-child(2)>div:nth-child(4){
+    font-size: 1.3rem;
+    margin-top: 0.4rem;
+    text-align: right;
+}
+.blogList>div:nth-child(2)>div:nth-child(4) embed{
+    height: 1.2rem;
+    width: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+
+
+
+
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0, maximum-scale=1.0">
+    <title>夏浩的博客</title>
+    <link rel="stylesheet" href="../lib/css/bootstrap.css">
+    <link rel="stylesheet" href="../lib/css/animate.css">
+    <link rel="stylesheet" href="../lib/css/mainMobile.css">
+    <link rel="stylesheet" href="../css/indexMobile.css">
+</head>
+<body>
+
+<div class="body col-sm-12 col-md-12 col-xs-12 noPad">
+    <div class="col-sm-12 col-md-12 col-xs-12 noPad" id="TopAnimation">
+        <transition name="switch-top-animation"
+                    appear appear-class="switch-top-animation-enter"
+                    appear-active="switch-top-animation-enter-active"
+                    v-on:enter="toShowNext">
+            <div v-show="showFirst" class="showFirst" key="showFirst"  >
+                <div class="col-sm-4 col-md-4 col-xs-4 noPad">
+                        <transition-group name="load" tag="div" >
+                            <div class=""
+                                 v-for="(item,index) in topAnimationList"
+                                 v-bind:style="{height:(6-index/2) + 'rem', width:(6-index/2) + 'rem',borderColor:item}"
+                                 v-bind:class="index%2===0?(index%4===0?'leftBorder':'rightBorder'):(index%3===0?'bottomBorder':'topBorder')"
+                                 v-bind:key="'load'+ index"
+                            ></div>
+                        </transition-group>
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 noPad">欢迎访问</div>
+                </div>
+
+            </div>
+        </transition>
+
+        <transition name="pull-up" tag="div">
+            <div v-if="showNext" class="showNext col-md-12 col-sm-12 col-xs-12 noPad" key="'showNext'">
+                <transition name="pull-up-inner" tag="div" >
+                    <div class="col-md-12 col-sm-12 col-xs-12 noPad pull-up-inner-div" v-if="showNext" v-bind:key="'pull-up'">
+                        <div class="pull-up-div"
+                         v-for="(item,index) in topAnimationList"
+                         v-bind:style="{height:parseInt(100/topAnimationList.length)+'vh',backgroundColor:item}"
+                         v-bind:key="'pull-up'+index"></div>
+                        <div class="col-sm-12 col-md-12 col-xs-12 entrance" >
+                            <div class="col-sm-12 col-md-12 col-xs-12">
+                                <div class="col-sm-6 col-md-6 col-xs-6 col-sm-offset-3 col-md-offset-3 col-xs-offset-3">
+                                    <img class="col-sm-12 col-md-12 col-xs-12" src="../img/icon-book.png" >
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-xs-12">夏 浩 的 书 房</div>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-xs-8 col-sm-offset-2 col-md-offset-2 col-xs-offset-2">
+                                <button class="btn col-xs-10 col-md-10 col-sm-10 col-sm-offset-1 col-md-offset-1 col-xs-offset-1" @click="jumpPage" aim="browseBlog">进入学习</button>
+                            </div>
+                        </div>
+                        <div class="pullUpManager col-sm-12 col-md-12 col-xs-12" @click="{{showMangerLogin=true}}">
+                                <div class="col-sm-12 col-md-12 col-xs-12"><img src="../img/upArrow.png"></div>
+                                <div class="col-sm-12 col-md-12 col-xs-12"><img src="../img/upArrow.png"></div>
+                        </div>
+                    </div>
+
+                </transition>
+
+        </div>
+        </transition>
+
+        <transition name="manger" tag="div" class="manger col-sm-12 col-md-12 col-xs-12 noPad" v-if="showMangerLogin" appear>
+            <div class="mangerLogin col-sm-12 col-md-12 col-xs-12 noPad" v-if="showMangerLogin" key="'mangerLogin'">
+                <div class="mangerLoginHead col-sm-12 col-md-12 col-xs-12 noPad" >
+                    <div class="col-sm-12 col-md-12 col-xs-12" @click="{{showMangerLogin=false}}">
+                        <img src="../img/left.png" >
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-xs-12">SIGN UP</div>
+                    <div class="ball geometry"></div>
+                    <div class="ball geometry"></div>
+                    <div class="ball geometry"></div>
+                </div>
+                <div class="mangerLoginBody col-sm-12 col-md-12 col-xs-12">
+                    <form>
+                        <div class="form-group">
+                            <label for="userName">User Name</label>
+                            <input type="text" class="form-control" v-model="loginData.userName" type="text" minlength="6" maxlength="6" id="userName" placeholder="请输入管理员账号">
+                        </div>
+                        <div class="form-group">
+                            <label for="keyWord">Password</label>
+                            <input type="text" class="form-control" v-model="loginData.keyword" id="keyWord" type="password" password="false" minlength="6" maxlength="12" placeholder="请输入密码">
+                        </div>
+                    </form>
+
+                    <div class="col-sm-12 col-md-12 col-xs-12">
+                        <button class="btn col-xs-4 col-sm-4 col-md-4 col-xs-offset-4 col-sm-offset-4 col-md-offset-4 animated animated__fast" :class=" loginJello?'jello':''"
+                                @click="login" v-on:animationend="loginJello=false" name="login">登录</button>
+                    </div>
+                </div>
+            </div>
+        </transition>
+
+        <prompt-box v-bind:show="promptBoxShow" v-bind:statusIndex="3" v-bind:customize="'登陆中'"></prompt-box>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+<script src="../lib/js/jquery-3.3.1.js"></script>
+<script src="../lib/js/bootstrap.js"></script>
+<script src="../lib/js/vue.min.js"></script>
+<script src="../lib/js/configMobile.js"></script>
+<script src="../lib/js/mainMobile.js"></script>
+<script src="../js/indexMobile.js"></script>
+</body>
+</html>

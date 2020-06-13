@@ -1,4 +1,69 @@
 $(document).ready(function () {
+    Vue.component('blog-head',{
+        props: {
+            'page-name':{
+                type:String,
+                default:'未知页面',
+            },
+            'fold':{
+                type:Boolean,
+                default:false,
+            },
+            'fixed':{
+                type:Boolean,
+                default:false,
+            }
+        },
+        data:{
+            browseMode:{
+                displayMore:false,
+            }
+        },
+        methods:{
+            toFold:function () {
+                this.$emit('to-fold',false);
+            },
+            backPage:function () {
+                window.history.go(-1);
+            }
+
+        },
+        computed: {
+            CHeadFold:function () {
+                if (this.fold) {
+                    return {
+
+                        margin:'0.2rem 0',
+
+                    }
+                }
+                return ''
+            }
+        },
+        watch:{
+            fold:function () {
+                console.log(this.fold);
+            }
+        },
+        template: '<nav class="navbar navbar-default nav-fill CHead" v-bind:style="{\'position\':(fixed?\'fixed\':\'relative\')}"  @click="toFold" role="navigation" >\n' +
+            '        <div class="container-fluid">\n' +
+            '            <div class="navbar-header" >\n' +
+            '                <button v-show="!fold" type="button" class="navbar-toggle" data-toggle="collapse"\n' +
+            '                        data-target="#example-navbar-collapse" >\n' +
+            '                    <div>\n' +
+            '                        <span class="sr-only">切换导航</span>\n' +
+            '                        <span class="icon-bar"></span>\n' +
+            '                        <span class="icon-bar"></span>\n' +
+            '                        <span class="icon-bar"></span>\n' +
+            '                    </div>\n' +
+            '                </button>\n' +
+            '                <a class="navbar-brand" v-show="!fold" href="#" @click="backPage"><span class="glyphicon glyphicon-chevron-left"></span></a>\n' +
+            '                <p class="navbar-text text-center" v-bind:style="CHeadFold" href="#">{{pageName}}</p>\n' +
+            '            </div>\n' +
+            '            \n' +
+            '        </div>\n' +
+            '    </nav>'
+    })
     let changeInformation = function(){
         let inner=[];
         for (let i=0,l=$('.canChange').length;i<l;i++ ){
@@ -98,4 +163,27 @@ $(document).ready(function () {
     })
 
     getMyslefInformation();
+
+
+    new Vue({
+        el:'#HeadBlog',
+        data:{
+            pageName:'博文详情',
+            isMobile:false,
+            fold:false,
+            blogHeadFixed:false,
+        },
+        methods:{
+            toFold:function (data) {
+                this.fold=data;
+            },
+        },
+        mounted(){
+            if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                this.isMobile=true;
+            }
+        }
+
+        
+    })
 })

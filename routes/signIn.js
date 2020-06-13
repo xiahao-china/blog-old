@@ -10,7 +10,7 @@ const UserModels=require('../models/User')
 router.post('/',function (req,res,next) {
     let form=new multiparty.Form();
     form.parse(req,function (err,fileds,file) {
-        console.log(fileds)
+
         try {
             if (!fileds.name[0]) {
                 throw new Error('请输入用户名')
@@ -26,15 +26,16 @@ router.post('/',function (req,res,next) {
                 return res.send();
             }
         }
-        
+
         UserModels.getUserByName(fileds.name[0])
             .then(function (result) {
+                console.log(result);
                 try {
                     if (!result) {
-                        throw new Error('用户不存在')
+                        throw '用户不存在';
                     }
                     if (sha1(fileds.password[0])!=result.password) {
-                        throw new Error('用户名或密码错误')
+                        throw '用户名或密码错误'
                     }
                 } catch (e) {
                     res.json({"status":'101',

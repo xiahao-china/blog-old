@@ -3,29 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>写博客</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../lib/css/bootstrap.css">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../lib/css/main.css">
     <link rel="stylesheet" href="../css/writeBlog.css">
 </head>
 <body>
-<nav class="head navbar navbar-collapse navbar-inverse ">
-    <div class="col-lg-offset-2 col-lg-2 logo">
-        <img src="../img/logo.png">
-        <span>Blog</span>
-    </div>
-
-    <div class="col-lg-6 ">
-        <div class="collapse navbar-collapse pull-right ">
-            <ul class="nav navbar-nav ">
-                <li><a href="./index.html">主页</a></li>
-                <li><a  href="./detail.html">博文目录</a></li>
-                <li><a href="./myself.html">个人中心</a></li>
-                <li><a class="active" href="./writeBlog.html">写博客</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div id="viewHead">
+    <viewHead></viewHead>
+</div>
 
 <div class="row">
 
@@ -91,7 +77,7 @@
 
                     <div class="btn-group">
                         <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="icon-picture"></i></a>
-                        <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+                        <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" id="descripitionImg"/>
                     </div>
                     <div class="btn-group">
                         <a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="icon-undo"></i></a>
@@ -112,14 +98,14 @@
         </div>
 
         <div class="col-lg-10 col-lg-offset-1">
-            <span class="col-lg-2 col-md-2 col-sm-2 col-xs-3">添加图片：<input id="tipHeadImg" class="hide" type="file">
-            </span><img class="tipHeadImg" src="../img/add.png" onclick="choseImg()">
+            <span class="col-lg-2 col-md-2 col-sm-2 col-xs-3">添加封面：<input id="tipHeadImg" class="hide" type="file">
+            </span><img class="tipHeadImg " src="../img/add.png" onclick="choseImg()">
             <div class="CoverImg"></div>
         </div>
 
         <div class="col-lg-offset-1 col-lg-10">
-            <button class="col-lg-3 col-lg-offset-2 col-md-offset-2 col-xs-offset-3 col-sm-offset-2" id="putBlog">发布博客</button>
-            <button class="col-lg-3" id="saveBlog">保存草稿</button>
+            <button class="col-lg-3 col-md-3 col-lg-offset-2 col-md-offset-2 col-xs-offset-3 col-sm-offset-2" id="putBlog">发布博客</button>
+            <button class="col-lg-3 col-md-3 col-lg-offset-1 col-md-offset-1 col-xs-offset-1 col-sm-offset-1" id="saveBlog">保存草稿</button>
         </div>
     </div>
 
@@ -144,11 +130,14 @@
 </div>
 
 </body>
-<script src="../js/jquery-3.3.1.js"></script>
-<script src="../js/jquery.hotkeys.js"></script>
-<script src="../js/bootstrap.js"></script>
-<script src="../js/bootstrap-wysiwyg.js"></script>
-<script src="../js/config.js"></script>
+<script src="../lib/js/jquery-3.3.1.js"></script>
+<script src="../lib/js/jquery.hotkeys.js"></script>
+<script src="../lib/js/bootstrap.js"></script>
+<script src="../lib/js/bootstrap-wysiwyg.js"></script>
+<script src="../lib/js/config.js"></script>
+<script src="../lib/js/vue.min.js"></script>
 <script src="../js/main.js"></script>
+<script src="../component/viewHead.js"></script>
 <script src="../js/writeBlog.js"></script>
 </html>
+

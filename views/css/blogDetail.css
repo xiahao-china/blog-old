@@ -20,6 +20,9 @@
 .blogInner>div:nth-child(2){
     border-top: rgba(0,0,0,0.3) solid 1px;
 }
+.blogInner>div:nth-child(2) img{
+    height: 20rem;
+}
 .blogInner>div{
     padding-left: 0;
 }

@@ -1,0 +1,36 @@
+#body{
+    min-height: 100vh;
+    background-color: white;
+
+}
+#BlogBody img{
+    max-width: 70vw;
+}
+.badge-info{
+    background-color: #5bc0de;
+    color: white;
+}
+.blogHead{
+    border-bottom: #adadad solid 1px;
+    padding-bottom: 0.5rem;
+}
+.blogHead>div>div{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.blogHead>div:nth-child(1){
+    margin-bottom: 0.5rem;
+}
+.blogHead>div:nth-child(2){
+    margin-bottom: 0.8rem;
+}
+.blogHead>div:nth-child(3)>div>span{
+    margin-left: 0.4rem;
+    border-radius: 0.2rem;
+
+}
+.blogHead>div:nth-child(3)>div>span:first-child{
+    margin-left: 0;
+}
+

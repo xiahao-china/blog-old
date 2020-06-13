@@ -1,4 +1,6 @@
-
+#editor img{
+    height: 20rem;
+}
 .writeBlog{
     background-color: white;
     padding: 10px;
@@ -32,7 +34,6 @@
     border-radius: 10px;
     padding: 6px;
     color: #ec971f;
-    margin-right: 20px;
     font-size: 14px;
 }
 .writeBlog>div:last-child>button:hover{
@@ -42,6 +43,10 @@
 
 .addBlogKey{
     font-size: small;
+    margin-top: 10px;
+}
+.addBlogKey>span{
+    margin-right: 1rem;
 }
 .addBlogKey>button{
     font-size: 10px;

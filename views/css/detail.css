@@ -1,5 +1,6 @@
 .mainBody{
     position: relative;
+    min-height: 80vh;
 }
 
 .head{

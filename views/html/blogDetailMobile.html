@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0, maximum-scale=1.0">
+    <title>博文详情</title>
+    <link rel="stylesheet" href="../lib/css/bootstrap.css">
+    <link rel="stylesheet" href="../lib/css/animate.css">
+    <link rel="stylesheet" href="../lib/css/mainMobile.css">
+    <link rel="stylesheet" href="../css/blogDetailMobile.css">
+</head>
+<body>
+<div id="body">
+    <sidebar :display.sync="sidebarDisplay"></sidebar>
+    <div v-bind:class="{'sidebar-pageBody':sidebarDisplay}" class="sidebar-pageBodySetting"  @touchstart="getStart" @touchend="changePosition">
+        <blog-head v-bind:page-name="pageName" v-bind:fold="fold" @to-fold="toFold" v-bind:open-sidebar="openSidebar" v-bind:fixed="blogHeadFixed"></blog-head>
+        <div class="blog" @touchstart="{{fold=true}}">
+            <div class="blogHead">
+                <div class="container">
+                    <div class="col-sm-8 col-md-8 col-xs-8 font-lger blod noPad">{{blog.name}}</div>
+                    <div class="col-sm-4 col-md-4 col-xs-4 noPad">
+                        <button class="btn pull-right font-md btn-sm" v-bind:class="{'btn-success':blog.collected,'btn-default':blog.collected}">
+                            <span class="glyphicon glyphicon-ok"></span>
+                            {{blog.collected?'已收藏':'收藏'}}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class=" noPad blod">
+                        <div class="pull-left noPad">
+                            <img src="../img/head_test.jpg" class="img-lg img-circle">
+                        </div>
+                        <div class="col-xs-8 font-lg blod">{{blog.action}}</div>
+                        <div class="col-xs-8 font-ml text-muted">{{blog.time}}发布</div>
+                    </div>
+
+                </div>
+                <div class="container">
+                    <div class="col-sm-8 col-xs-8 col-md-8 noPad">
+                        <span class="badge font-ml badge-info" v-for="(item,index) in blog.keyWord">{{item}}</span>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-xs-4 noPad font-ml text-right">
+                        {{blog.saw}}次阅读
+                    </div>
+
+                </div>
+            </div>
+            <div class="container" v-html="blog.details" id="BlogBody">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="../lib/js/jquery-3.3.1.js"></script>
+<script src="../lib/js/jquery.cookie.js"></script>
+<script src="../lib/js/bootstrap.js"></script>
+<script src="../lib/js/vue.min.js"></script>
+<script src="../lib/js/configMobile.js"></script>
+<script src="../lib/js/mainMobile.js"></script>
+<script src="../js/blogDetailMobile.js"></script>
+</body>
+</html>

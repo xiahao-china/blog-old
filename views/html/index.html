@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>夏浩的博客</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/animate.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../lib/css/bootstrap.css">
+    <link rel="stylesheet" href="../lib/css/animate.css">
+    <link rel="stylesheet" href="../lib/css/main.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
@@ -15,8 +15,13 @@
 </div>
 
 <div class="head row">
-    <div class="col-lg-offset-2 col-lg-2 col-md-offset-2 col-md-2 col-sm-offset-2 col-sm-2 col-xs-offset-1 col-xs-3 logo"><img src="../img/logo.png"><div>Blog</div></div>
-    <div class="col-lg-offset-3 col-lg-4 col-md-offset-2 col-md-4 col-sm-offset-1 col-sm-6  col-xs-8 ">
+    <div class="col-lg-offset-2 col-lg-2 col-md-offset-2 col-md-2 col-sm-offset-2 col-sm-2 col-xs-offset-1 col-xs-3 logo">
+        <div>
+            <div >X</div>
+            <div >Blog</div>
+        </div>
+    </div>
+    <div class="col-lg-offset-3 col-lg-4 col-md-offset-2 col-md-4 col-sm-offset-1 col-sm-6  col-xs-6 col-xs-offset-2 ">
         <div class="active"><a href="index.html">Home</a></div>
         <div>Forum</div>
         <div data-toggle="modal" data-target="#signIn">Sign In</div>
@@ -28,14 +33,21 @@
     <div class="HotTip pull-left col-lg-5  col-md-7 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
         <div class="Tip"  v-for="tip in tipList" v-bind:id="tip._id" v-on:click="toBlogDetail">
             <img v-bind:src="tip.img">
-            <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
                 <div></div>
                 <div></div>
-                <div>
-                    <p>{{tip.name}}<span class="text-muted"><embed class="HotTipSvg" src="../svg/write.svg">{{tip.action}}</span></p>
-                    <p>{{tip.briefIntroduction}}</p>
-                    <p class="text-muted pull-right"><span><embed class="HotTipSvg" src="../svg/eye.svg">{{tip.saw}}</span>
-                        <span><embed class="HotTipSvg" src="../svg/time.svg">{{tip.time}}</span></p>
+                <div class="col-sm-12 col-md-12 col-lg-12 ">
+                    <div class="col-sm-12 col-md-12 col-lg-12 noLAndRPadding">
+                        <div class="col-sm-9 col-md-9 col-lg-9 noLAndRPadding">
+                            {{tip.name}}
+                        </div>
+                        <div class="col-sm-3 col-md-3 col-lg-3 noLAndRPadding">
+                            <span class="text-muted"><embed class="HotTipSvg" src="../svg/write.svg">{{tip.action}}</span>
+                        </div>
+                        </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 noLAndRPadding">{{tip.briefIntroduction}}</div>
+                    <div class="text-muted pull-right"><span><embed class="HotTipSvg" src="../svg/eye.svg">{{tip.saw}}</span>
+                        <span><embed class="HotTipSvg" src="../svg/time.svg">{{tip.time}}</span></div>
                 </div>
             </div>
 
@@ -46,7 +58,7 @@
     <div class=""></div>
 
     <div class="col-lg-4 col-lg-offset-1 col-md-5 ">
-        <div class="col-lg-offset-1">2019</div>
+        <div class="col-lg-offset-1">{{new Date().getFullYear()}}</div>
         <div>Write You <span>Think</span></div>
         <div>Here you can share your experience with others. We sincerely thank everyone.</div>
         <div onclick="todetail()">From here on</div>
@@ -89,11 +101,11 @@
 
 
 
-<script src="../js/jquery-3.3.1.js"></script>
-<script src="../js/jquery.cookie.js"></script>
-<script src="../js/bootstrap.js"></script>
-<script src="../js/vue.min.js"></script>
-<script src="../js/config.js"></script>
+<script src="../lib/js/jquery-3.3.1.js"></script>
+<script src="../lib/js/jquery.cookie.js"></script>
+<script src="../lib/js/bootstrap.js"></script>
+<script src="../lib/js/vue.min.js"></script>
+<script src="../lib/js/config.js"></script>
 <script src="../js/main.js"></script>
 <script src="../js/index.js"></script>
 </body>

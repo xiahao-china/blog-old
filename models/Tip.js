@@ -30,11 +30,18 @@ module.exports={
             .limit(1)
             .exec();
     },
-    getNewTip:function (nowday) {
+    getNewTip:function (page) {
         return Tip
-            .find({time:new RegExp(nowday,'i')},{})
+            .find({},{details:0,by:0})
             .sort({_id:-1})
-            .limit(10)
+            .skip(page*5)
+            .limit(5)
+            .exec()
+
+    },
+    getTipCount:function () {
+        return Tip
+            .count({})
             .exec()
 
     }

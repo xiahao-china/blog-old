@@ -43,7 +43,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'post',
-            url: Path+'/signIn',
+            url: Path+'/signIn/',
             contentType:false,
             dataType: 'json',
             processData:false,
