@@ -12,7 +12,7 @@ router.post('/findTip',function (req,res,next) {
     form.parse(req,function (err,fileds,file) {
         try {
             if (!fileds.key){
-                throw  new Error('键值缺失，查找失败')
+                throw  '键值缺失，查找失败'
             }
         } catch (e) {
             res.json({"status":'100',
@@ -41,7 +41,7 @@ router.post('/findOneTip',function (req,res,next) {
         console.log(fileds);
         try {
             if (!fileds.id[0]){
-                throw  new Error('帖子id缺失，查找失败')
+                throw  '帖子id缺失，查找失败'
             }
         } catch (e) {
             res.json({"status":'100',

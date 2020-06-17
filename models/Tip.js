@@ -44,6 +44,11 @@ module.exports={
             .count({})
             .exec()
 
+    },
+    deleteOneTip:function (tipId) {
+        return Tip
+            .remove({_id:tipId})
+            .exec()
     }
 
 }

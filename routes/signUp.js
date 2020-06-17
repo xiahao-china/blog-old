@@ -10,19 +10,19 @@ router.post('/',function (req,res,next) {
     form.parse(req,function (err,fields,file) {
         try {
             if (!(fields.name[0].length >= 1 && fields.name[0].length <= 10)) {
-                throw new Error('名字请限制在 1-10 个字符')
+                throw '名字请限制在 1-10 个字符'
             }
             if (['male', 'female', 'none'].indexOf(gender) === -1) {
-                throw new Error('性别只能是 male、female 或者为默认none')
+                throw '性别只能是 male、female 或者为默认none'
             }
             if (!file.headImg[0].name) {
-                throw new Error('缺少头像')
+                throw '缺少头像'
             }
             if (fields.password[0].length < 6) {
-                throw new Error('密码至少 6 个字符')
+                throw '密码至少 6 个字符'
             }
             if (!UserModels.checkMail(fields.mail[0])) {
-                throw new Error('缺少邮箱，或邮箱不正确')
+                throw '缺少邮箱，或邮箱不正确'
             }
         } catch (e) {
             // 注册失败，异步删除上传的头像

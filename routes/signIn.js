@@ -13,10 +13,10 @@ router.post('/',function (req,res,next) {
 
         try {
             if (!fileds.name[0]) {
-                throw new Error('请输入用户名')
+                throw '请输入用户名'
             }
             if (!fileds.password[0]) {
-                throw new Error('请输入密码')
+                throw '请输入密码'
             }
         } catch (e) {
             console.log(e);

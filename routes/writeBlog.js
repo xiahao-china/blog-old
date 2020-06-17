@@ -128,7 +128,6 @@ router.post('/upLoadBlogImg',function (req,res,next) {
             console.log(Error);
             res.json({"status":'100',
                 "msg":e});
-            console.log(e);
             return res.send();
 
         }

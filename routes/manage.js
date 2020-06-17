@@ -35,4 +35,38 @@ router.post('/upDateHotTip',function (req,res,next) {
 
 })
 
+router.post('/deleteTip',function (req,res,next) {
+    let form=new multiparty.Form({uploadDir: './public/picture/'});
+    form.parse(req,function (err,fileds,file) {
+      try {
+          if (!req.session.user) {
+              throw '异常：您未登录';
+          }
+          if (!fileds.tipId){
+              throw '请输入您要删除的帖子id';
+          } 
+      }  catch (e) {
+          res.json({"status":'100',
+              "msg":e});
+          return res.send();
+      }
+      
+      let promise=new Promise(function (resolve, reject) {
+          TipModels
+              .findTip(fileds.tipId)
+              .then(function (tip) {
+                  tip.action==req.session.user?resolve():reject();
+              })
+      }).then(function () {
+          TipModels
+              .deleteOneTip(fileds.tipId)
+              .then(function (end) {
+                  res.json({"status":'100',
+                      "msg":end});
+                  return res.send();
+              })
+      })
+    })
+})
+
 module.exports = router

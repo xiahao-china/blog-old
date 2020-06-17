@@ -35,42 +35,48 @@ $(document).ready(function () {
             let file= dataURLtoFile($('#editor img').eq(i).attr('src'),'blogImg'+i+'.jpg');
             that.blogImg.push(file);
         }
+        let promise;
+        if (!that.blogImg.length){
+            promise=new Promise(function (resolve, reject) {
+                resolve();
+            })
+        }else{
+            promise= new Promise(function (resolve, reject) {
+                let index=that.blogImg.length;
 
-
-        let promise=new Promise(function (resolve, reject) {
-            let index=that.blogImg.length;
-            let upBlogImg=function(){
-                let img = new FormData();
-                img.append('img',that.blogImg[that.blogImg.length-index]);
-                $.ajax({
-                    type: 'post',
-                    url: Path+'/writeBlog/upLoadBlogImg',
-                    contentType:false,
-                    dataType: 'json',
-                    processData:false,
-                    async: true,
-                    data: img,
-                    success: function (result) {
-                        that.allURL.push(result.path);
-                        index--
-                        if (index>0){
-                            upBlogImg();
-                        } else{
-                            resolve(that.allURL);
+                let upBlogImg=function(){
+                    let img = new FormData();
+                    img.append('img',that.blogImg[that.blogImg.length-index]);
+                    $.ajax({
+                        type: 'post',
+                        url: Path+'/writeBlog/upLoadBlogImg',
+                        contentType:false,
+                        dataType: 'json',
+                        processData:false,
+                        async: true,
+                        data: img,
+                        success: function (result) {
+                            that.allURL.push(result.path);
+                            index--
+                            if (index>0){
+                                upBlogImg();
+                            } else{
+                                resolve(that.allURL);
+                            }
+                        },
+                        error: function () {
+                            alert('服务器连接失败啦');
+                            reject();
                         }
-                    },
-                    error: function () {
-                        alert('服务器连接失败啦');
-                        reject();
-                    }
-                })
-            }
-            upBlogImg();
-        })
-            .then(function (path) {
-                path.forEach(function (item,index) {
+                    })
+                }
+                upBlogImg();
+            })
+        }
+        promise.then(function (path) {
+                path? path.forEach(function (item,index) {
                     $('#editor img').eq(index).attr('src',item)
-                })
+                }):void (0);
 
                 let tip = new FormData();
                 let keyWord=[];
@@ -207,17 +213,17 @@ $(document).ready(function () {
         })
     })
     $('#putBlog').click(function () {
-        TipFunction.postTip();
-        // TipFunction.allowUpTip[0]=TipFunction.allowUpTip[0]&& $("[name='blogName']").val();
-        // TipFunction.allowUpTip[1]=TipFunction.allowUpTip[1]&& $("[name='briefIntroduction']").val();
-        // TipFunction.allowUpTip[2]=TipFunction.allowUpTip[2]&& $("#editor").html();
-        // TipFunction.allowUpTip[3]=TipFunction.allowUpTip[3]&& $('.addBlogKey').children('p').length;
-        // let key=true;
-        // console.log(TipFunction.allowUpTip);
-        // for (let i of TipFunction.allowUpTip){
-        //     key = key && i;
-        // }
-        // key? TipFunction.postTip():PromptBox.displayPromptBox('帖子未填写完成，请继续编辑');
+        // TipFunction.postTip();
+        TipFunction.allowUpTip[0]=TipFunction.allowUpTip[0]&& $("[name='blogName']").val();
+        TipFunction.allowUpTip[1]=TipFunction.allowUpTip[1]&& $("[name='briefIntroduction']").val();
+        TipFunction.allowUpTip[2]=TipFunction.allowUpTip[2]&& $("#editor").html();
+        TipFunction.allowUpTip[3]=TipFunction.allowUpTip[3]&& $('.addBlogKey').children('p').length;
+        let key=true;
+        console.log(TipFunction.allowUpTip);
+        for (let i of TipFunction.allowUpTip){
+            key = key && i;
+        }
+        key? TipFunction.postTip():PromptBox.displayPromptBox('帖子未填写完成，请继续编辑');
 
     })
     // $("#descripitionImg").change(function(){
