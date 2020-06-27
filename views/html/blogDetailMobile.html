@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="body">
-    <sidebar :display.sync="sidebarDisplay"></sidebar>
+    <sidebar :display.sync="sidebarDisplay" v-bind:login-cookie-name="'myblog'" v-bind:get-login-URL="loginURL"></sidebar>
     <div v-bind:class="{'sidebar-pageBody':sidebarDisplay}" class="sidebar-pageBodySetting"  @touchstart="getStart" @touchend="changePosition">
         <blog-head v-bind:page-name="pageName" v-bind:fold="fold" @to-fold="toFold" v-bind:open-sidebar="openSidebar" v-bind:fixed="blogHeadFixed"></blog-head>
         <div class="blog" @touchstart="{{fold=true}}">

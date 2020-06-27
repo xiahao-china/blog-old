@@ -61,10 +61,14 @@ router.post('/deleteTip',function (req,res,next) {
           TipModels
               .deleteOneTip(fileds.tipId)
               .then(function (end) {
-                  res.json({"status":'100',
+                  res.json({"status":'200',
                       "msg":end});
                   return res.send();
               })
+      }).catch(function () {
+          res.json({"status":'403',
+              "msg":end});
+          return res.send();
       })
     })
 })

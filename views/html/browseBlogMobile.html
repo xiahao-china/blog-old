@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id="body">
-    <sidebar :display.sync="sidebarDisplay"></sidebar>
+    <sidebar :display.sync="sidebarDisplay" v-bind:login-cookie-name="'myblog'" v-bind:get-login-url="loginURL"></sidebar>
     <div v-bind:class="{'sidebar-pageBody':sidebarDisplay}" class="sidebar-pageBodySetting" @touchstart="getStart" @touchend="changePosition">
         <blog-head v-bind:page-name="pageName" v-bind:fold="fold" @to-fold="toFold" v-bind:open-sidebar="openSidebar" v-bind:fixed="blogHeadFixed"></blog-head>
         <div class="container bodyList" @touchstart="{{fold=true}}">
@@ -53,8 +53,7 @@
                      v-for="(item,index) in blogList"
                      v-bind:key="'blog' + index"
                      v-bind:data-index="index"
-                     v-bind:style="{marginTop:(index+1)/5>1 && (index+1)%5==1?'3rem':'1rem'}"
-
+                     v-bind:style="{marginTop:(index+1)/5>1 && (index+1)%5==1?'3rem':'1rem','overflow-y':(index+1)%5==0?'visible':'hidden','height':(index+1)%5==0?'auto':'10rem'}"
                      v-on:click.capture="toGetBlogDetail(item._id)"
                 >
                     <div class="col-sm-4 col-md-4 col-xs-4 noPad">
@@ -70,6 +69,8 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-sm-12 col-xs-12 text-center text-muted font-ml pageNum" key="'page'" >----/ page-{{page}} /----</div>
             </transition-group>
 
 

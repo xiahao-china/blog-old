@@ -80,11 +80,6 @@ router.get('/getNewTip',function (req,res,next) {
                     "Tip":tipInformation});
                 return res.send();
             })
-            .catch(function (e) {
-                res.json({"status":'201',
-                    "msg":e});
-                return res.send();
-            })
 
     })
 })

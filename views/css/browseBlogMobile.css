@@ -113,7 +113,10 @@
     width: 1.2rem;
     margin-right: 0.5rem;
 }
-
+.pageNum{
+    padding-top: 1rem;
+    overflow-y: visible;
+}
 
 
 

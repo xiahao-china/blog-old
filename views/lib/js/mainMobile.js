@@ -83,19 +83,19 @@ Vue.component('blog-head',{
             console.log(this.fold);
         }
     },
-    template: '<nav class="navbar navbar-default nav-fill CHead" v-bind:style="{\'position\':(fixed?\'fixed\':\'relative\')}"  @click="toFold" role="navigation" >\n' +
+    template: '<nav class="navbar navbar-default nav-fill CHead" v-bind:style="{\'position\':(fixed?\'fixed\':\'relative\')}"  @touchend="toFold" role="navigation" >\n' +
         '        <div class="container-fluid">\n' +
         '            <div class="navbar-header" >\n' +
         '                <button v-show="!fold" type="button" class="navbar-toggle" data-toggle="collapse"\n' +
         '                        data-target="#example-navbar-collapse" >\n' +
-        '                    <div v-on:click="openSidebar">\n' +
+        '                    <div v-on:touchend="openSidebar">\n' +
         '                        <span class="sr-only">切换导航</span>\n' +
         '                        <span class="icon-bar"></span>\n' +
         '                        <span class="icon-bar"></span>\n' +
         '                        <span class="icon-bar"></span>\n' +
         '                    </div>\n' +
         '                </button>\n' +
-        '                <a class="navbar-brand" v-show="!fold" href="#" @click="backPage"><span class="glyphicon glyphicon-chevron-left"></span></a>\n' +
+        '                <a class="navbar-brand" v-show="!fold" href="#" @touchend="backPage"><span class="glyphicon glyphicon-chevron-left"></span></a>\n' +
         '                <p class="navbar-text text-center" v-bind:style="CHeadFold" href="#">{{pageName}}</p>\n' +
         '            </div>\n' +
         '            \n' +
@@ -155,6 +155,14 @@ Vue.component('sidebar',{
         display:{
             default:false,
             type:Boolean,
+        },
+        'login-cookie-name':{        //这是login状态的cookie键名
+            type:String,
+            default:'',
+        },
+        'get-login-url':{       //这是获取登陆人信息的函数
+            type:String,
+            default:''
         }
     },
     data:function(){
@@ -164,31 +172,68 @@ Vue.component('sidebar',{
                 link:'./myself.html',
                 img:'../img/Personal.png',
             },{
-                name:'收藏博客',
-                link:'#',
-                img:'../img/collection.png',
-            },{
                 name:'管理博客',
                 link:'#',
                 img:'../img/manage.png',
             },{
+                name:'收藏博客',
+                link:'#',
+                img:'../img/collection.png',
+            },{
                 name:'本站导航',
                 link:'#',
                 img:'../img/message.png',
-            },]
+            },],
+            userInf:{
+                name:'',
+                imgURL:''
+            }
         }
     },
     methods:{
         closeSidebar:function () {
             this.$emit("update:display",false);
         },
+        getUserInf:function(){
+            let that=this;
+            console.log(that.loginCookieName , that.getLoginUrl,that)
 
+            if (this.loginCookieName && this.getLoginUrl){
+
+                $.ajax({
+                    type: 'post',
+                    url: that.getLoginUrl,
+                    contentType:false,
+                    dataType: 'json',
+                    processData:false,
+                    async: true,
+                    data: {},
+                    success: function (result) {
+                        if(result.status=='201'){
+
+                        }else if (result.status=='200'){
+                            that.userInf.name=result.name;
+                            that.userInf.imgURL=result.headImg;
+                        }
+                    },
+                    error: function (result) {
+
+                        if(result.status=='201'){
+                            alert('您还未登录');
+                            window.location.href='index.html'
+                        }
+                        PromptBox.displayPromptBox('操作失败');
+                    }
+                })
+            }
+        },
         enterBefore:function (el,done) {
+            // console.log(done);
             $(el).css({
                 'opacity':0,
                 'transform':'translateY(30px)',
             })
-            done();
+            // done();
         },
         enter:function (el,done) {
             setTimeout(function () {
@@ -201,6 +246,14 @@ Vue.component('sidebar',{
         }
 
     },
+    watch:{
+        loginCookieName(val){
+            this.getUserInf();
+        }
+    },
+    mounted(){
+        this.getUserInf();
+    },
     template:'<transition tag="div" name="sidebar-shell" appear>\n' +
         '    <div class="sidebar container" key="sidebarShell" v-if="display" v-on:sidebar-change="console.log(\'a\')">\n' +
         '        <transition-group\n' +
@@ -210,10 +263,10 @@ Vue.component('sidebar',{
         '                v-on:before-enter="enterBefore"\n' +
         '                v-on:enter="enter"\n' +
         '        >\n' +
-        '            <li key="sidebarClose" key="sidebar0" v-bind:data-index="0"  @click="closeSidebar"><span class="glyphicon glyphicon-remove font-lger"></span></li>\n' +
-        '            <li key="sidebarHeadImg" key="sidebar1" v-bind:data-index="1"><img class="img-circle" src="../img/head_test.jpg"></li>\n' +
-        '            <li key="sidebarUserName" key="sidebar2" v-bind:data-index="2" class="font-lger blod">Clut</li>\n' +
-        '            <li v-for="(item,index) in list" v-bind:key="\'sidebarList\'+(index+3)" v-bind:data-index="index+3" class="sidebarList">\n' +
+        '            <li key="sidebarClose" key="sidebar0" v-bind:data-index="0"  @touchend="closeSidebar"><span class="glyphicon glyphicon-remove font-lger"></span></li>\n' +
+        '            <li key="sidebarHeadImg" key="sidebar1" v-bind:data-index="1"><img class="img-circle" v-bind:src="userInf.imgURL?userInf.imgURL:\'../img/head_test.jpg\'"></li>\n' +
+        '            <li key="sidebarUserName" key="sidebar2" v-bind:data-index="2" class="font-lger blod">{{userInf.name?userInf.name:\'您还未登录\'}}</li>\n' +
+        '            <li v-for="(item,index) in list" v-bind:key="\'sidebarList\'+(index+3)" v-bind:data-index="index+3" class="sidebarList" v-bind:touchend="item.listMethods?item.listMethods():void(0)">\n' +
         '                <img :src="item.img" class="img-md">\n' +
         '                <a :href="item.link" class="">{{item.name}}</a>\n' +
         '            </li>\n' +
@@ -422,4 +475,39 @@ mainTool.prototype={
     var reg = /^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
     return reg.test(str);
 },
+    getCookie:function (cookie_name) {
+        var allcookies = document.cookie;
+        //索引长度，开始索引的位置
+        var cookie_pos = allcookies.indexOf(cookie_name);
+
+        // 如果找到了索引，就代表cookie存在,否则不存在
+        if (cookie_pos != -1) {
+            // 把cookie_pos放在值的开始，只要给值加1即可
+            //计算取cookie值得开始索引，加的1为“=”
+            cookie_pos = cookie_pos + cookie_name.length + 1;
+            //计算取cookie值得结束索引
+            var cookie_end = allcookies.indexOf(";", cookie_pos);
+
+            if (cookie_end == -1) {
+                cookie_end = allcookies.length;
+
+            }
+            //得到想要的cookie的值
+            var value = unescape(allcookies.substring(cookie_pos, cookie_end));
+        }
+        return value;
+    },
+    debounce:function (func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            }, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
 }

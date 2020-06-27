@@ -7,7 +7,7 @@ $(document).ready(function () {
             fold:false,
             blogHeadFixed:false,
             sidebarDisplay:false,
-
+            loginURL:window.URL+'/myself/getMyselfInformation',
 
             tool:new mainTool(),
             blogList:[],
@@ -68,7 +68,7 @@ $(document).ready(function () {
                     detail:data,
                     isFile:false,
                     successCallback:function (result) {
-                        console.log(result);
+                        result.Tip[result.Tip.length-1].nowPage=result.pageInf.nowPage;
                         let tip=[];
                         that.blogList[0]?tip=JSON.parse(JSON.stringify(that.blogList)):void(0);
                         for (let i of result.Tip){
@@ -77,6 +77,7 @@ $(document).ready(function () {
                             tip.push(i);
                         }
                         that.blogList=tip;
+                        console.log(that.blogList);
                         that.maxPage=result.pageInf.maxPage;
                         resolve?resolve():void (0);
                     },

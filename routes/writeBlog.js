@@ -105,7 +105,7 @@ router.post('/upLoadBlogImg',function (req,res,next) {
     form.parse(req,function (err,fields,file) {
         console.log(fields,file.img);
         let tip={};
-        let imgPath='public/picture/'+/\w*(.gif|.jpg|.jpeg|.png|.GIF|.JPG|.PNG)$/g.exec(file.img[0].path)[0];
+        let imgPath='/public/picture/'+/\w*(.gif|.jpg|.jpeg|.png|.GIF|.JPG|.PNG)$/g.exec(file.img[0].path)[0];
         console.log(file.img[0].path);
         try {
 
