@@ -19,7 +19,7 @@
     "express-session": "1.16.2",
     "express-winston": "3.2.1",
     "marked": "0.7.0",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "mongo": "0.1.0",
     "mongolass": "4.4.2",
     "multiparty": "4.2.1",
